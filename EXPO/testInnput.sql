@@ -6,3 +6,5 @@ INSERT INTO EXPO.deltager VALUES
 
 INSERT INTO EXPO.deltagerliste VALUES
 	('listenavn1','11111111'),
+	('listenavn2','11111112');
+ 
