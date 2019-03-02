@@ -9,8 +9,8 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="C:/Users/mitja/OneDrive/Documents/Jobb/core-3.2.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/mitja/OneDrive/Documents/Jobb/jcommon-1.0.8.jar"/>
-	<classpathentry kind="lib" path="C:/Users/mitja/OneDrive/Documents/Jobb/jfreechart.jar"/>
+	<classpathentry kind="lib" path="libs/jfreechart.jar"/>
+	<classpathentry kind="lib" path="libs/jcommon-1.0.8.jar"/>
+	<classpathentry kind="lib" path="libs/core-3.2.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
