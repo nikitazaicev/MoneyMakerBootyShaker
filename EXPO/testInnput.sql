@@ -6,5 +6,5 @@ INSERT INTO EXPO.Stand VALUES
 
 INSERT INTO EXPO.StandHistory VALUES
 	('listenavn1','11111111'),
-	('listenavn2','11111112');
+	('listenavn2','11111114');
  
