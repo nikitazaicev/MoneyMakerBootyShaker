@@ -1,6 +1,8 @@
 package objects;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -8,14 +10,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import javax.persistence.OneToMany;
+
 
 @Entity
 public class Stand implements Serializable{
 
 	@Id @GeneratedValue
-	String id;
+	private String id;
 	
-	int score;	
+	private int score;
+	
+	@OneToMany
+	private Set<TimeStats> historikk;
 	
 	public Stand() {
 		score = 0;
@@ -24,6 +31,7 @@ public class Stand implements Serializable{
 	public Stand(int score) {
 		super();
 		this.score = score;
+		historikk = new HashSet<TimeStats>();
 	}
 	
 	public String getId() {

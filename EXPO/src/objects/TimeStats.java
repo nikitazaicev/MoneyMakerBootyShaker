@@ -11,21 +11,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.eclipse.persistence.internal.jpa.config.sequencing.GeneratedValueImpl;
+
+import javax.persistence.JoinColumn;
 
 
 @Stateless
 @Entity
 @IdClass(TimeStatsId.class)
+@Table(schema = "expo", name = "timestats")
 public class TimeStats implements Serializable {
 
-	@Id @GeneratedValue @OneToMany(mappedBy="Stand")
+	@Id @GeneratedValue 
 	String id;
 	@Id 
 	Timestamp tiden;
 	int score;
+	
+	@ManyToOne
+	@JoinColumn(name="stand",referencedColumnName="id")
+	private Stand stand;
 	
 	public TimeStats() {
 		this.tiden = Timestamp.valueOf(LocalDateTime.now()); 
