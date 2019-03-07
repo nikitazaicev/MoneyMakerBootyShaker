@@ -1,13 +1,20 @@
 set search_path = EXPO;
 
+DROP TABLE expo.timestats CASCADE;
+
+
+
+CREATE TABLE expo.timestats (
+Id varchar(100) NOT NULL,
+Score int,
+Tiden timestamp NOT NULL,
+PRIMARY KEY (Id, Tiden),
+FOREIGN KEY (Id) REFERENCES expo.Stand(Id)
+);
+
+INSERT INTO expo.stand (Id,Score) VALUES 
+	('1',5);
+
+INSERT INTO expo.timestats (Id,Score,Tiden) VALUES 
+	('1','0',now())
 	
-INSERT INTO EXPO.Stand VALUES
-	('11111111', 'Nakita2', 'Zaicev2', 'pass2', 'OTHER');	
-
-INSERT INTO EXPO.StandHistory VALUES
-	('listenavn1','11111111'),
-
-	('listenavn2','11111114'),
- 
-
-	('listenavn2','11111113');

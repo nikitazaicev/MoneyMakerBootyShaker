@@ -29,7 +29,8 @@ public class CrunchifyQRCode {
 	// Tutorial: http://zxing.github.io/zxing/apidocs/index.html
  
 	public static void main(String[] args) {
-		String myCodeText = "someshit";
+		int nr = 0;
+		String myCodeText = "Stand"+nr;
 		String filePath = "/Users/mitja/Documents/CrunchifyQR2.png";
 		int size = 250;
 		String fileType = "png";
