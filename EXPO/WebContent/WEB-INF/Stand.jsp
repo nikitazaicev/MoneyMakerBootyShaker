@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>yoyo</title>
 </head>
 <body>
-
+<p>yosdisdfuhjhksdfgjhksdfgk</p>
 <c:out value = "${nr}"/>
 
 </body>

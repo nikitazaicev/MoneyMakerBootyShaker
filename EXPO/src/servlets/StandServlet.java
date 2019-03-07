@@ -1,4 +1,4 @@
-package Servlets;
+package servlets;
 
 import java.io.IOException;
 
@@ -32,7 +32,7 @@ public class StandServlet extends HttpServlet {
 			s = request.getSession(false);
 		}
 		
-		request.getRequestDispatcher("/Stand.html").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/Stand.jsp").forward(request, response);
 	}
 
 	/**
