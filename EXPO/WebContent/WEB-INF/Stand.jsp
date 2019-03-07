@@ -9,7 +9,7 @@
 </head>
 <body>
 <p>yosdisdfuhjhksdfgjhksdfgk</p>
-<c:out value = "${nr}"/>
+<c:out value = "${stand.score}"/>
 
 </body>
 </html>

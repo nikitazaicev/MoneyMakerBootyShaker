@@ -9,38 +9,37 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 
-@Stateless
 @Entity
 public class Stand implements Serializable{
 
 	@Id @GeneratedValue
-	String Id;
+	String id;
 	
-	int Score;	
+	int score;	
 	
 	public Stand() {
-		Score = 0;
+		score = 0;
 	}
 	
 	public Stand(int score) {
 		super();
-		Score = score;
+		this.score = score;
 	}
 	
 	public String getId() {
-		return Id;
+		return id;
 	}
 	
 	public void setId(String id) {
-		Id = id;
+		this.id = id;
 	}
 	
 	public int getScore() {
-		return Score;
+		return score;
 	}
 	
 	public void setScore(int score) {
-		Score = score;
+		this.score = score;
 	}
 	
 	

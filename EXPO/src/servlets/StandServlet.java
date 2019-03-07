@@ -12,6 +12,9 @@ import javax.servlet.http.HttpSession;
 
 import org.eclipse.persistence.sessions.Session;
 
+import objects.Stand;
+import objects.StandEAO;
+
 /**
  * Servlet implementation class StandServlet
  */
@@ -19,7 +22,8 @@ import org.eclipse.persistence.sessions.Session;
 public class StandServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-
+	@EJB
+	StandEAO eao;
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -27,9 +31,24 @@ public class StandServlet extends HttpServlet {
 		
 		String nr = request.getHeader("nr");
 		
-		HttpSession s = request.getSession(false);
-		if(s==null) {
-			s = request.getSession(false);
+		HttpSession session = request.getSession(false);
+	
+		
+		if(session==null) {
+				session = request.getSession(true);
+			}
+		session.setAttribute("vote",0);
+		
+		int vote = (int) session.getAttribute("vote");
+		
+		String id = "1";
+		
+		Stand stand = eao.getStand(id);
+		
+		
+		
+		if(stand!=null) {
+	session.setAttribute("Stand", stand);
 		}
 		
 		request.getRequestDispatcher("WEB-INF/Stand.jsp").forward(request, response);
