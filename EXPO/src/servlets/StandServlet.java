@@ -37,19 +37,15 @@ public class StandServlet extends HttpServlet {
 		if(session==null) {
 				session = request.getSession(true);
 			}
+		session.setAttribute("nr", 1);
 		session.setAttribute("vote",0);
 		
-		int vote = (int) session.getAttribute("vote");
 		
 		String id = "1";
 		
 		Stand stand = eao.getStand(id);
-		
-		
-		
-		if(stand!=null) {
-	session.setAttribute("Stand", stand);
-		}
+	
+	    session.setAttribute("stand", stand);
 		
 		request.getRequestDispatcher("WEB-INF/Stand.jsp").forward(request, response);
 	}

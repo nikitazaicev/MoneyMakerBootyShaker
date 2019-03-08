@@ -8,8 +8,8 @@
 <title>yoyo</title>
 </head>
 <body>
-<p>yosdisdfuhjhksdfgjhksdfgk</p>
-<c:out value = "${stand.score}"/>
+<p>stand "${nr}"</p>
+<p>score "${stand.score}"<p/>
 
 </body>
 </html>

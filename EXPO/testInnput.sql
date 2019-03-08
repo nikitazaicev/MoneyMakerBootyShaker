@@ -2,8 +2,6 @@ set search_path = EXPO;
 
 DROP TABLE expo.timestats CASCADE;
 
-
-
 CREATE TABLE expo.timestats (
 Id varchar(100) NOT NULL,
 Score int,

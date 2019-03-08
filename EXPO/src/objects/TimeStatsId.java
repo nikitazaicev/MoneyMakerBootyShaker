@@ -6,6 +6,10 @@ import java.time.LocalDateTime;
 
 public class TimeStatsId implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String id;
 	private Timestamp tiden;
 	

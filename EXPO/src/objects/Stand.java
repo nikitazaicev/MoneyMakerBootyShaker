@@ -11,9 +11,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(schema = "expo", name = "stand")
 public class Stand implements Serializable{
 
 	@Id @GeneratedValue
@@ -21,7 +23,7 @@ public class Stand implements Serializable{
 	
 	private int score;
 	
-	@OneToMany
+	@OneToMany(mappedBy="stand")
 	private Set<TimeStats> historikk;
 	
 	public Stand() {

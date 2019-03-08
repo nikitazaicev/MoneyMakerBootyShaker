@@ -20,20 +20,19 @@ import org.eclipse.persistence.internal.jpa.config.sequencing.GeneratedValueImpl
 import javax.persistence.JoinColumn;
 
 
-@Stateless
-@Entity
 @IdClass(TimeStatsId.class)
+@Entity
 @Table(schema = "expo", name = "timestats")
 public class TimeStats implements Serializable {
 
 	@Id @GeneratedValue 
-	String id;
+	private String id;
 	@Id 
-	Timestamp tiden;
-	int score;
+	private Timestamp tiden;
+	private int score;
 	
 	@ManyToOne
-	@JoinColumn(name="stand",referencedColumnName="id")
+	//@JoinColumn(name="id")
 	private Stand stand;
 	
 	public TimeStats() {
