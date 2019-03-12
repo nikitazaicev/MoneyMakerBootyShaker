@@ -10,7 +10,7 @@
 <title>Stand "${nr}"</title>
 </head>
 <body>
-<p>stand "${nr}"</p>
+<p>stand "${stand.id}"</p>
 <p>scoere "${stand.score}"<p/>
 <h1>hei, er dette fint nå?</h1>
 <h2>

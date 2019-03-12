@@ -29,25 +29,19 @@ public class StandServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String nr = request.getHeader("nr");
+		String nr = request.getParameter("nr");
 		
-		HttpSession session = request.getSession(false);
+		if(nr==null||!nr.matches("[0-1000]")) {
+			request.getRequestDispatcher("WEB-INF/Fail.jsp").forward(request, response);
+		}else {
+		
+		Stand stand = eao.getStand(nr);
 	
-		
-		if(session==null) {
-				session = request.getSession(true);
-			}
-		session.setAttribute("nr", 1);
-		session.setAttribute("vote",0);
-		
-		
-		String id = "1";
-		
-		Stand stand = eao.getStand(id);
-	
-	    session.setAttribute("stand", stand);
+	    request.setAttribute("stand", stand);
 		
 		request.getRequestDispatcher("WEB-INF/Stand.jsp").forward(request, response);
+	
+		}
 	}
 
 	/**
@@ -55,25 +49,26 @@ public class StandServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session = request.getSession(false);
+	
+		if(session==null) {
+				session = request.getSession(true);
+			}
+		
+		String score = (String)session.getAttribute("Vote");
+		String nyScore = (String)session.getAttribute("nyVote");
+		
+		int vote = Integer.parseInt(score);
+		int nyVote = Integer.parseInt(nyScore);
+		
+		Stand stand = (Stand) request.getAttribute("stand");
+		
+		if(vote==0) {
+			stand.vote(nyVote);
+		}else {
+			stand.reVote(vote,nyVote);
+		}
+		request.getRequestDispatcher("WEB-INF/Stand.jsp").forward(request, response);	
 	}
 
 }
-
-//set search_path = EXPO;
-//
-//DROP TABLE expo.timestats CASCADE;
-//
-//CREATE TABLE expo.timestats (
-//Id varchar(100) NOT NULL,
-//Score int,
-//Tiden timestamp NOT NULL,
-//PRIMARY KEY (Id, Tiden),
-//FOREIGN KEY (Id) REFERENCES expo.Stand(Id)
-//);
-//
-//INSERT INTO expo.stand (Id,Score) VALUES 
-//	('1',5);
-//
-//INSERT INTO expo.timestats (Id,Score,Tiden) VALUES 
-//	('1','0',now())
-//	
