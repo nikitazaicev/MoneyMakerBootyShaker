@@ -14,6 +14,7 @@ import org.eclipse.persistence.sessions.Session;
 
 import objects.Stand;
 import objects.StandEAO;
+import objects.TimeStats;
 
 /**
  * Servlet implementation class StandServlet
@@ -68,18 +69,25 @@ public class StandServlet extends HttpServlet {
 		String SnyVote = (String) request.getParameter("nyVote");
 		int nyVote = 0;
 		
+		
+		
 		if(Svote==null) {//bruker har ikke stemt på denne stenden tidligere
-			nyVote = Integer.parseInt(SnyVote);
-			stand.vote(nyVote);
-			session.setAttribute("vote"+nr,nyVote);
-			eao.update(stand);
-			
+			if(!SnyVote.equals("0")) {
+				nyVote = Integer.parseInt(SnyVote);
+				TimeStats ts = stand.vote(nyVote);
+				session.setAttribute("vote"+nr,nyVote);
+				eao.update(ts);
+				eao.update(stand);
+			}
 		}else {
-			int vote = Integer.parseInt(Svote);
-			stand.reVote(vote,nyVote);
-			session.removeAttribute("vote"+nr);
-			session.setAttribute("vote"+nr,nyVote);
-			eao.update(stand);
+			if(!SnyVote.equals("0")) {
+				int vote = Integer.parseInt(Svote);
+				TimeStats ts = stand.reVote(vote,nyVote);
+				session.removeAttribute("vote"+nr);
+				session.setAttribute("vote"+nr,nyVote);
+				eao.update(ts);
+				eao.update(stand);
+			}
 		}
 		
 		request.getRequestDispatcher("WEB-INF/Ferdig.jsp").forward(request, response);	

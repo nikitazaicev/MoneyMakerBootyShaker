@@ -17,7 +17,12 @@ public class StandEAO {
 	}
 
 	public void update(Stand stand) { 
-		em.persist(stand);
+		em.merge(stand);
+	}
+
+	public void update(TimeStats ts) {
+		em.persist(ts);
+		
 	}
 
 }

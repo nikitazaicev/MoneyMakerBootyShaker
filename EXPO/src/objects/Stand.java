@@ -41,21 +41,26 @@ public class Stand implements Serializable{
 		historikk = new HashSet<TimeStats>();
 	}
 	
-	public void vote(int vote) {
+	public TimeStats vote(int vote) {
 		// Hver bruker skal kunne sende inn en vote
 		// Denne voten skal lagres
+		TimeStats ts = new TimeStats(this,Timestamp.valueOf(LocalDateTime.now()),score);
+		historikk.add(ts);
 		score = score + vote;
 		antStemmer++;
-		historikk.add(new TimeStats(this,Timestamp.valueOf(LocalDateTime.now()),score));
+		return ts;
 		//setAntStemmer(getAntStemmer() + 1);
 	}
-	public void reVote(int gammel, int nyVote) {
+	public TimeStats reVote(int gammel, int nyVote) {
 		// Hente inn gammel vote fra session
 		// Fjern gammel vote fra score og legg til nyVote
 		// antStemmer forblir dem samme 
+		TimeStats ts = new TimeStats(this,Timestamp.valueOf(LocalDateTime.now()),score);
+		historikk.add(ts);
 		score = score - gammel + nyVote;
-		historikk.add(new TimeStats(this,Timestamp.valueOf(LocalDateTime.now()),score));
+		return ts;
 	}
+	
 	public int averageVote() {
 		return score / antStemmer;
 	}
