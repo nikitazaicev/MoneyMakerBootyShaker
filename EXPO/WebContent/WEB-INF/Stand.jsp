@@ -5,15 +5,15 @@
 <html>
 
 <head>
-<link href="../CSS/stylesheet.css" rel="stylesheet" type="text/css">
-<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<link href="CSS/stylesheet.css" rel="stylesheet" type="text/css">
 <meta charset="ISO-8859-1">
 <title>Stand "${nr}"</title>
 </head>
 <body>
 <p>stand "${nr}"</p>
-<p>scoehehehre "${stand.score}"<p/>
-<form>
+<p>scoere "${stand.score}"<p/>
+<h1>hei, er dette fint nå?</h1>
+<h2>
 <div id="wrapper">
 <input type="radio" id="star1" name="star" />
 <label for="star1"></label>
@@ -26,9 +26,7 @@
 <input type="radio" id="star5" name="star" />
 <label for="star5"></label>
 </div>
-<div>
-    <input type="submit" value="Send">
-</div>
-</form>
+</h2>
+
 </body>
 </html>

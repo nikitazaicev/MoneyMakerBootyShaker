@@ -2,12 +2,12 @@
 
 body{
   text-align: center;
-  background-color: #34495e;
+  background-color: white;
   font-family :"Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 h1{
-  color:#FFF;
+  color:#4286f4;
   font-weight:500;
   padding:30px;
   @include text-shadow(0 3px 3px darken(#34495e,5%));
@@ -30,11 +30,7 @@ label{
   @include transition(all .2s);
   @include text-shadow(0 3px 3px darken(#34495e,5%));
   
-  &:hover{
-    font-size:50px;
-    color:#FFF;
-    @include text-shadow(0 0 5px lighten(#34495e,50%));
-  }
+  
   
   &:before{
     display: inline;
