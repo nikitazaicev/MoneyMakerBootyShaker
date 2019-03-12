@@ -43,7 +43,7 @@ public class Stand implements Serializable{
 		// Hver bruker skal kunne sende inn en vote
 		// Denne voten skal lagres
 		score = score + vote;
-		setAntStemmer(getAntStemmer() + 1);
+		//setAntStemmer(getAntStemmer() + 1);
 	}
 	public void reVote(int gammel, int nyVote) {
 		// Hente inn gammel vote fra session
