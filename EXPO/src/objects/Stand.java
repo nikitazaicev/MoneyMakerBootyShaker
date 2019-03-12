@@ -1,6 +1,8 @@
 package objects;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,7 +19,7 @@ import javax.persistence.Table;
 @Entity
 @Table(schema = "expo", name = "stand")
 public class Stand implements Serializable{
-
+	
 	@Id @GeneratedValue
 	private String id;
 	
@@ -43,6 +45,8 @@ public class Stand implements Serializable{
 		// Hver bruker skal kunne sende inn en vote
 		// Denne voten skal lagres
 		score = score + vote;
+		antStemmer++;
+		historikk.add(new TimeStats(id,Timestamp.valueOf(LocalDateTime.now()),score,this));
 		//setAntStemmer(getAntStemmer() + 1);
 	}
 	public void reVote(int gammel, int nyVote) {
@@ -50,6 +54,7 @@ public class Stand implements Serializable{
 		// Fjern gammel vote fra score og legg til nyVote
 		// antStemmer forblir dem samme 
 		score = score - gammel + nyVote;
+		historikk.add(new TimeStats(id,Timestamp.valueOf(LocalDateTime.now()),score,this));
 	}
 	public int averageVote() {
 		return score / antStemmer;

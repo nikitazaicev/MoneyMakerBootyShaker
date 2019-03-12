@@ -16,4 +16,8 @@ public class StandEAO {
 		return em.find(Stand.class, id);
 	}
 
+	public void update(Stand stand) { 
+		em.persist(stand);
+	}
+
 }

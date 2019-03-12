@@ -39,10 +39,11 @@ public class TimeStats implements Serializable {
 		this.tiden = Timestamp.valueOf(LocalDateTime.now()); 
 	}
 	
-	public TimeStats(String id, Timestamp tiden, int score ) {
+	public TimeStats(String id, Timestamp tiden, int score, Stand stand ) {
 		this.id = id;
 		this.tiden = Timestamp.valueOf(LocalDateTime.now()); 
 		this.score = score;
+		this.stand = stand;
 	}
 	
 	public String getId() {

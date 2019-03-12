@@ -31,15 +31,21 @@ public class StandServlet extends HttpServlet {
 		
 		String nr = request.getParameter("nr");
 		
-		if(nr==null||!nr.matches("[0-1000]")) {
+		if(nr==null||!nr.matches("[0-9]+")||nr.length()>3){
 			request.getRequestDispatcher("WEB-INF/Fail.jsp").forward(request, response);
 		}else {
 		
-		Stand stand = eao.getStand(nr);
+			HttpSession session = request.getSession(false);
+			
+			if(session==null) {
+					session = request.getSession(true);
+				}
+			
+			Stand stand = eao.getStand(nr);
 	
-	    request.setAttribute("stand", stand);
+			session.setAttribute("stand", stand);	
 		
-		request.getRequestDispatcher("WEB-INF/Stand.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/Stand.jsp").forward(request, response);
 	
 		}
 	}
@@ -50,25 +56,34 @@ public class StandServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession(false);
-	
+		
 		if(session==null) {
-				session = request.getSession(true);
-			}
+			request.getRequestDispatcher("WEB-INF/Fail.jsp").forward(request, response);
+			
+			}else {
 		
-		String score = (String)session.getAttribute("Vote");
-		String nyScore = (String)session.getAttribute("nyVote");
+		Stand stand = (Stand) session.getAttribute("stand");	
+		String nr = request.getParameter("nr");
+		String Svote = (String) session.getAttribute("vote");
+		String SnyVote = (String) request.getParameter("nyVote");
+		int nyVote = 0;
 		
-		int vote = Integer.parseInt(score);
-		int nyVote = Integer.parseInt(nyScore);
-		
-		Stand stand = (Stand) request.getAttribute("stand");
-		
-		if(vote==0) {
+		if(Svote==null) {//bruker har ikke stemt på denne stenden tidligere
+			nyVote = Integer.parseInt(SnyVote);
 			stand.vote(nyVote);
+			session.setAttribute("vote"+nr,nyVote);
+			eao.update(stand);
+			
 		}else {
+			int vote = Integer.parseInt(Svote);
 			stand.reVote(vote,nyVote);
+			session.removeAttribute("vote"+nr);
+			session.setAttribute("vote"+nr,nyVote);
+			eao.update(stand);
 		}
-		request.getRequestDispatcher("WEB-INF/Stand.jsp").forward(request, response);	
+		
+		request.getRequestDispatcher("WEB-INF/Ferdig.jsp").forward(request, response);	
+		}
 	}
 
 }
