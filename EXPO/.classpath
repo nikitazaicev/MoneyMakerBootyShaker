@@ -21,8 +21,8 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="libs/javax.ejb-api-3.2.2.jar"/>
 	<classpathentry kind="lib" path="libs/javax.persistence.jar"/>
-	<classpathentry kind="lib" path="C:/Users/saras/OneDrive/Skrivebord/apache-tomee-7.1.0-webprofile/apache-tomee-webprofile-7.1.0/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="C:/Users/saras/OneDrive/Skrivebord/apache-tomee-7.1.0-webprofile/apache-tomee-webprofile-7.1.0/lib/postgresql-42.2.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/saras/OneDrive/Skrivebord/apache-tomee-7.1.0-webprofile/apache-tomee-webprofile-7.1.0/lib/eclipselink-2.7.1.jar"/>
+	<classpathentry kind="lib" path="libs/eclipselink-2.7.1.jar"/>
+	<classpathentry kind="lib" path="libs/postgresql-42.2.5.jar"/>
+	<classpathentry kind="lib" path="libs/servlet-api.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
