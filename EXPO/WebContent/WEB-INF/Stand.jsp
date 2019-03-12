@@ -16,12 +16,12 @@ stand ${sessionScope[stand].id}
 score ${sessionScope[stand].score}
 <br>
 <form method="post" action="StandServlet">
-<input type="radio"  name="nyVote" value="0" checked="checked"/>
-<input type="radio"  name="nyVote" value="1" />
-<input type="radio"  name="nyVote" value="2"/>
-<input type="radio"  name="nyVote" value="3" />
-<input type="radio"  name="nyVote" value="4"/>
-<input type="radio"  name="nyVote" value="5"/>
+<input type="radio"  name="nyVote" value="0" checked="checked">0
+<input type="radio"  name="nyVote" value="1" />1
+<input type="radio"  name="nyVote" value="2"/>2
+<input type="radio"  name="nyVote" value="3" />3
+<input type="radio"  name="nyVote" value="4"/>4
+<input type="radio"  name="nyVote" value="5"/>5
 <input type="submit" name="nyVote">
 </form>
 <br>

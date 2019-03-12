@@ -25,33 +25,35 @@ import javax.persistence.JoinColumn;
 @Table(schema = "expo", name = "timestats")
 public class TimeStats implements Serializable {
 
-	@Id @GeneratedValue 
-	private String id;
+
+	@Id @ManyToOne //@JoinColumn(name="id")
+	private Stand stand;
 	@Id 
 	private Timestamp tiden;
 	private int score;
 	
-	@ManyToOne
-	//@JoinColumn(name="id")
-	private Stand stand;
+
 	
 	public TimeStats() {
 		this.tiden = Timestamp.valueOf(LocalDateTime.now()); 
 	}
 	
-	public TimeStats(String id, Timestamp tiden, int score, Stand stand ) {
-		this.id = id;
+	public TimeStats(Stand stand, Timestamp tiden, int score) {
+		this.stand = stand;
 		this.tiden = Timestamp.valueOf(LocalDateTime.now()); 
 		this.score = score;
-		this.stand = stand;
 	}
 	
-	public String getId() {
-		return id;
+	
+	
+	public Stand getStand() {
+		return stand;
 	}
-	public void setId(String id) {
-		this.id = id;
+
+	public void setStand(Stand stand) {
+		this.stand = stand;
 	}
+
 	public Timestamp getTime() {
 		return tiden;
 	}

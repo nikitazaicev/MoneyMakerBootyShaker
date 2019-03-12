@@ -5,29 +5,25 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class TimeStatsId implements Serializable {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private String id;
+
+	private String stand;
 	private Timestamp tiden;
 	
 	public TimeStatsId() {
 		this.tiden = Timestamp.valueOf(LocalDateTime.now()); 
 	}
 	
-	public TimeStatsId(String id, Timestamp tiden) {
-		this.id = id;
+	public TimeStatsId(String stand, Timestamp tiden) {
+		this.stand = stand;
 		this.tiden = tiden;
 	}
 	
-	public String getId() {
-		return id;
+	public String getStand() {
+		return stand;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setStand(String stand) {
+		this.stand = stand;
 	}
 
 	public Timestamp getTiden() {

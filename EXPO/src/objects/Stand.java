@@ -37,7 +37,7 @@ public class Stand implements Serializable{
 	public Stand(int score, int antStemmer) {
 		super();
 		this.score = score;
-		this.setAntStemmer(antStemmer);
+		this.antStemmer = antStemmer;
 		historikk = new HashSet<TimeStats>();
 	}
 	
@@ -46,7 +46,7 @@ public class Stand implements Serializable{
 		// Denne voten skal lagres
 		score = score + vote;
 		antStemmer++;
-		historikk.add(new TimeStats(id,Timestamp.valueOf(LocalDateTime.now()),score,this));
+		historikk.add(new TimeStats(this,Timestamp.valueOf(LocalDateTime.now()),score));
 		//setAntStemmer(getAntStemmer() + 1);
 	}
 	public void reVote(int gammel, int nyVote) {
@@ -54,7 +54,7 @@ public class Stand implements Serializable{
 		// Fjern gammel vote fra score og legg til nyVote
 		// antStemmer forblir dem samme 
 		score = score - gammel + nyVote;
-		historikk.add(new TimeStats(id,Timestamp.valueOf(LocalDateTime.now()),score,this));
+		historikk.add(new TimeStats(this,Timestamp.valueOf(LocalDateTime.now()),score));
 	}
 	public int averageVote() {
 		return score / antStemmer;
