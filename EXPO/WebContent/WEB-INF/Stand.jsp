@@ -7,13 +7,14 @@
 <head>
 <link href="CSS/stylesheet1.css" rel="stylesheet" type="text/css">
 <meta charset="ISO-8859-1">
-<title>Stand "${nr}"</title>
+<title>Stand ${stand.id}</title>
 </head>
 <body>
-<c:set var="stand" value="stand${nr}" />
-stand ${sessionScope[stand].id}
+stand ${stand.id}
 <br>
-score ${sessionScope[stand].score}
+score ${stand.score}
+<br>
+vote ${nyVote}
 <br>
 <form method="post" action="StandServlet">
 <input type="radio"  name="nyVote" value="0" checked="checked">0

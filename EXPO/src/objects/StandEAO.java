@@ -24,5 +24,8 @@ public class StandEAO {
 		em.persist(ts);
 		
 	}
-
+	public TimeStats getStats(String id) {
+		return em.find(TimeStats.class, id);
+	}
+	
 }

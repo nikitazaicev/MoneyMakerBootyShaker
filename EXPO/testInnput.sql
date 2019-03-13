@@ -19,7 +19,12 @@ FOREIGN KEY (stand_id) REFERENCES expo.Stand(Id)
 );
 
 INSERT INTO expo.stand (Id,Score,antStemmer) VALUES 
-	('1',5,1);
+	('1',0,0),
+	('2',0,0),
+	('3',0,0);
+	
 
 INSERT INTO expo.timestats (stand_id,Score,Tiden) VALUES 
-	('1','0',now())
+	('1','0',now()),
+	('2','0',now()),
+	('3','0',now())

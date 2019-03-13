@@ -31,7 +31,7 @@ public class StandServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String nr = request.getParameter("nr");
-		
+
 		if(nr==null||!nr.matches("[0-9]+")||nr.length()>3){
 			request.getRequestDispatcher("WEB-INF/Fail.jsp").forward(request, response);
 		}else {
@@ -65,33 +65,20 @@ public class StandServlet extends HttpServlet {
 		
 		Stand stand = (Stand) session.getAttribute("stand");	
 		String nr = request.getParameter("nr");
-		String Svote = (String) session.getAttribute("vote");
-		String SnyVote = (String) request.getParameter("nyVote");
+		String StringNyVote = (String) request.getParameter("nyVote");
 		int nyVote = 0;
 		
 		
-		
-		if(Svote==null) {//bruker har ikke stemt på denne stenden tidligere
-			if(!SnyVote.equals("0")) {
-				nyVote = Integer.parseInt(SnyVote);
+			if(StringNyVote != null && !StringNyVote.equals("0")) {
+				nyVote = Integer.parseInt(StringNyVote);
 				TimeStats ts = stand.vote(nyVote);
-				session.setAttribute("vote"+nr,nyVote);
-				eao.update(ts);
-				eao.update(stand);
-			}
-		}else {
-			if(!SnyVote.equals("0")) {
-				int vote = Integer.parseInt(Svote);
-				TimeStats ts = stand.reVote(vote,nyVote);
-				session.removeAttribute("vote"+nr);
-				session.setAttribute("vote"+nr,nyVote);
+				session.setAttribute("nyVote",nyVote);
 				eao.update(ts);
 				eao.update(stand);
 			}
 		}
 		
 		request.getRequestDispatcher("WEB-INF/Ferdig.jsp").forward(request, response);	
-		}
 	}
 
 }

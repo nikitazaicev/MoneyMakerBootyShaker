@@ -44,10 +44,10 @@ public class Stand implements Serializable{
 	public TimeStats vote(int vote) {
 		// Hver bruker skal kunne sende inn en vote
 		// Denne voten skal lagres
-		TimeStats ts = new TimeStats(this,Timestamp.valueOf(LocalDateTime.now()),score);
-		historikk.add(ts);
 		score = score + vote;
 		antStemmer++;
+		TimeStats ts = new TimeStats(this,Timestamp.valueOf(LocalDateTime.now()),score);
+		historikk.add(ts);
 		return ts;
 		//setAntStemmer(getAntStemmer() + 1);
 	}
@@ -55,9 +55,9 @@ public class Stand implements Serializable{
 		// Hente inn gammel vote fra session
 		// Fjern gammel vote fra score og legg til nyVote
 		// antStemmer forblir dem samme 
+		score = score - gammel + nyVote;
 		TimeStats ts = new TimeStats(this,Timestamp.valueOf(LocalDateTime.now()),score);
 		historikk.add(ts);
-		score = score - gammel + nyVote;
 		return ts;
 	}
 	

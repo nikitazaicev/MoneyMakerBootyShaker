@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import objects.TimeStatsEAO;
+import objects.StandEAO;
 
 /**
  * Servlet implementation class JuryServlet
@@ -18,7 +18,7 @@ import objects.TimeStatsEAO;
 public class JuryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     @EJB
-    TimeStatsEAO eao;
+    StandEAO eao;
     
     	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
