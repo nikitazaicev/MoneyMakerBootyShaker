@@ -42,12 +42,10 @@ public class StandServlet extends HttpServlet {
 		} else {
 
 			HttpSession session = request.getSession(false);
-
+			
 			if (session == null) {
-				session = request.getSession(true);
-				
+				session = request.getSession(true);	
 			}
-
 			Map<String, Integer> votes = new HashMap<String, Integer>();
 			votes =  (Map<String, Integer>) session.getAttribute("votes");
 			if(votes==null) {
@@ -79,24 +77,17 @@ public class StandServlet extends HttpServlet {
 			request.getRequestDispatcher("WEB-INF/Fail.jsp").forward(request, response);
 
 		} else {
-
-			Stand stand = (Stand) session.getAttribute("stand");
-			Map<String, Integer> votes = new HashMap<String, Integer>();
-			String nr = stand.getId();
-			String id = request.getParameter("nr");
 			
-			if(!request.getParameter("nr").equals(nr)) {
-				String feil = "Klarte ikke å registrere stemmen, try again. "
-						+ "Grunnen er at du gikk inn på en annen stand uten å stemme ferdig på denne";
-				session.setAttribute("feil", feil);
-				response.sendRedirect("http://localhost:14193/Prosjekt/StandServlet?nr="+id);
-				return;
-			}
-			
+			String nr = request.getParameter("nr");
+			Stand stand = eao.getStand(nr);
+			session.setAttribute("stand", stand);
+			Map<String, Integer> votes = new HashMap<String, Integer>();			
 			votes =  (Map<String, Integer>) session.getAttribute("votes");
+			
 			if(!votes.containsKey(nr)) {
 				votes.put(nr, 0);
 			}
+			
 			String StringNyVote = (String) request.getParameter("nyVote");
 			int nyVote = 0;
 
@@ -109,7 +100,6 @@ public class StandServlet extends HttpServlet {
 				votes.put(nr, nyVote);
 			}
 		}
-		session.removeAttribute("feil");
 		request.getRequestDispatcher("WEB-INF/Ferdig.jsp").forward(request, response);
 	}
 
