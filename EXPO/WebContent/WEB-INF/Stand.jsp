@@ -10,6 +10,8 @@
 <title>Stand ${stand.id}</title>
 </head>
 <body>
+<p> ${feil}</p>
+<br>
 You have visited Stand #${param.nr}
 <br>
 stand ${stand.id}

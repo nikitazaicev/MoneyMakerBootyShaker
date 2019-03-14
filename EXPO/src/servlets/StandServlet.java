@@ -57,7 +57,7 @@ public class StandServlet extends HttpServlet {
 		
 			
 			Stand stand = eao.getStand(nr);
-
+			
 			session.setAttribute("stand", stand);
 			
 			request.getRequestDispatcher("WEB-INF/Stand.jsp").forward(request, response);
@@ -84,7 +84,11 @@ public class StandServlet extends HttpServlet {
 			Map<String, Integer> votes = new HashMap<String, Integer>();
 			String nr = stand.getId();
 			String id = request.getParameter("nr");
+			
 			if(!request.getParameter("nr").equals(nr)) {
+				String feil = "Klarte ikke å registrere stemmen, try again. "
+						+ "Grunnen er at du gikk inn på en annen stand uten å stemme ferdig på denne";
+				session.setAttribute("feil", feil);
 				response.sendRedirect("http://localhost:14193/Prosjekt/StandServlet?nr="+id);
 				return;
 			}
@@ -105,7 +109,7 @@ public class StandServlet extends HttpServlet {
 				votes.put(nr, nyVote);
 			}
 		}
-
+		session.removeAttribute("feil");
 		request.getRequestDispatcher("WEB-INF/Ferdig.jsp").forward(request, response);
 	}
 
