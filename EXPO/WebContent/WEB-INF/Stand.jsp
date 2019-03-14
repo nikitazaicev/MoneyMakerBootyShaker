@@ -10,12 +10,13 @@
 <title>Stand ${stand.id}</title>
 </head>
 <body>
+You have visited Stand #${param.nr}
+<br>
 stand ${stand.id}
 <br>
 score ${stand.score}
 <br>
-vote ${nyVote}
-<br>
+
 <form method="post" action="StandServlet">
 <input type="radio"  name="nyVote" value="0" checked="checked">0
 <input type="radio"  name="nyVote" value="1" />1
@@ -23,7 +24,9 @@ vote ${nyVote}
 <input type="radio"  name="nyVote" value="3" />3
 <input type="radio"  name="nyVote" value="4"/>4
 <input type="radio"  name="nyVote" value="5"/>5
-<input type="submit" name="nyVote">
+<input type="hidden" name="nr" value="${param.nr}">
+<br>
+<input type="submit" name="nr" value="Gi stemme">
 </form>
 <br>
 

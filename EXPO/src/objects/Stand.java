@@ -31,7 +31,7 @@ public class Stand implements Serializable{
 	
 	public Stand() {
 		score = 0;
-		setAntStemmer(0);
+		antStemmer=0;
 	}
 	
 	public Stand(int score, int antStemmer) {
@@ -40,7 +40,16 @@ public class Stand implements Serializable{
 		this.antStemmer = antStemmer;
 		historikk = new HashSet<TimeStats>();
 	}
-	
+	public Stand(String id, int score) {
+		super();
+		this.score = score;
+		historikk = new HashSet<TimeStats>();
+	}
+	/**
+	 * denne her er egentlig ubrukelig siden man kan bruke reVote() med 0 som gammel stemme
+	 * @param vote
+	 * @return timestamp of when vote was made "now()"
+	 */
 	public TimeStats vote(int vote) {
 		// Hver bruker skal kunne sende inn en vote
 		// Denne voten skal lagres
@@ -51,6 +60,12 @@ public class Stand implements Serializable{
 		return ts;
 		//setAntStemmer(getAntStemmer() + 1);
 	}
+	/**
+	 * 
+	 * @param gammel stemmen session har mappet til en stand
+	 * @param nyVote ny stemme man submitter
+	 * @return timestamp of when vote was made "now()"
+	 */
 	public TimeStats reVote(int gammel, int nyVote) {
 		// Hente inn gammel vote fra session
 		// Fjern gammel vote fra score og legg til nyVote
@@ -59,6 +74,14 @@ public class Stand implements Serializable{
 		TimeStats ts = new TimeStats(this,Timestamp.valueOf(LocalDateTime.now()),score);
 		historikk.add(ts);
 		return ts;
+	}
+
+	public Set<TimeStats> getHistorikk() {
+		return historikk;
+	}
+
+	public void setHistorikk(Set<TimeStats> historikk) {
+		this.historikk = historikk;
 	}
 	
 	public int averageVote() {

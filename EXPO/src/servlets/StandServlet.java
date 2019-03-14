@@ -59,9 +59,9 @@ public class StandServlet extends HttpServlet {
 			Stand stand = eao.getStand(nr);
 
 			session.setAttribute("stand", stand);
-
+			
 			request.getRequestDispatcher("WEB-INF/Stand.jsp").forward(request, response);
-
+			
 		}
 	}
 
@@ -75,14 +75,21 @@ public class StandServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 
 		if (session == null) {
+			
 			request.getRequestDispatcher("WEB-INF/Fail.jsp").forward(request, response);
 
 		} else {
-			
+
 			Stand stand = (Stand) session.getAttribute("stand");
-			String nr = stand.getId();
 			Map<String, Integer> votes = new HashMap<String, Integer>();
-			 votes =  (Map<String, Integer>) session.getAttribute("votes");
+			String nr = stand.getId();
+			String id = request.getParameter("nr");
+			if(!request.getParameter("nr").equals(nr)) {
+				response.sendRedirect("http://localhost:14193/Prosjekt/StandServlet?nr="+id);
+				return;
+			}
+			
+			votes =  (Map<String, Integer>) session.getAttribute("votes");
 			if(!votes.containsKey(nr)) {
 				votes.put(nr, 0);
 			}
