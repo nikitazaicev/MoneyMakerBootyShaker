@@ -1,11 +1,23 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import objects.Stand;
+import objects.StandEAO;
+import objects.TimeStats;
 
 /**
  * Servlet implementation class StatsServlet
@@ -13,27 +25,41 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/StatsServlet")
 public class StatsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public StatsServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	@EJB
+	StandEAO eao;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession s = request.getSession(false);
+
+		if (s != null) {
+			s.invalidate();
+		}
+			s = request.getSession(true);
+			Stand stand = eao.getStand("1");
+			ArrayList<TimeStats> set = stand.getHistorikk();
+			set.sort((x1,x2)->x1.compareTo(x2));
+			Map<Long,Integer> tuple = new HashMap<Long,Integer>();
+			ArrayList<Long> xCoordinates = new ArrayList<Long>();
+			ArrayList<Integer> yCoordinates = new ArrayList<Integer>();
+			Iterator<TimeStats> iter = set.iterator();
+			while(iter.hasNext()){
+				
+				TimeStats  ts = (TimeStats) iter.next();
+				tuple.put(ts.getTime().getTime(), ts.getScore());
+				xCoordinates.add(ts.getTime().getTime());
+				yCoordinates.add(ts.getScore());
+				
+			}
+			
+			request.setAttribute("xCoordinates", xCoordinates);
+			request.setAttribute("yCoordinates", yCoordinates);	
+		request.getRequestDispatcher("WEB-INF/Stats.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

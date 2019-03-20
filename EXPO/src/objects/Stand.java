@@ -3,12 +3,14 @@ package objects;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -25,9 +27,9 @@ public class Stand implements Serializable{
 	
 	private int score;
 	private int antStemmer;
-	
-	@OneToMany(mappedBy="stand")
-	private Set<TimeStats> historikk;
+
+	@OneToMany(mappedBy = "stand", fetch = FetchType.EAGER)
+	private ArrayList<TimeStats>  historikk;
 	
 	public Stand() {
 		score = 0;
@@ -38,12 +40,12 @@ public class Stand implements Serializable{
 		super();
 		this.score = score;
 		this.antStemmer = antStemmer;
-		historikk = new HashSet<TimeStats>();
+		historikk = new ArrayList<TimeStats>();
 	}
 	public Stand(String id, int score) {
 		super();
 		this.score = score;
-		historikk = new HashSet<TimeStats>();
+		historikk = new ArrayList<TimeStats>();
 	}
 	/**
 	 * denne her er egentlig ubrukelig siden man kan bruke reVote() med 0 som gammel stemme
@@ -76,11 +78,11 @@ public class Stand implements Serializable{
 		return ts;
 	}
 
-	public Set<TimeStats> getHistorikk() {
+	public ArrayList<TimeStats> getHistorikk() {
 		return historikk;
 	}
 
-	public void setHistorikk(Set<TimeStats> historikk) {
+	public void setHistorikk(ArrayList<TimeStats> historikk) {
 		this.historikk = historikk;
 	}
 	

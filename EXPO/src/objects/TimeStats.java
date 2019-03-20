@@ -67,4 +67,8 @@ public class TimeStats implements Serializable {
 		this.score = score;
 	}
 
+	public int compareTo(TimeStats ts) {
+		return tiden.compareTo(ts.getTime());
+	}
+
 }

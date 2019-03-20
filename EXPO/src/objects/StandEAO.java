@@ -1,5 +1,6 @@
 package objects;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 import javax.ejb.Stateless;
@@ -39,8 +40,9 @@ public class StandEAO {
 	 * 
 	 * @return all statistikk over en stand med gitt id
 	 */
-	public Set<TimeStats> standInfo(String id) {
+	public ArrayList<TimeStats> standInfo(String id) {
 		Stand stand = getStand(id);
+		
 		return stand.getHistorikk();
 	}
 }

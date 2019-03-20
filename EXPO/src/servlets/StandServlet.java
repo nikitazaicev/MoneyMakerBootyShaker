@@ -1,8 +1,10 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -40,12 +42,11 @@ public class StandServlet extends HttpServlet {
 		if (nr == null || !nr.matches("[0-9]+") || nr.length() > 3) {
 			request.getRequestDispatcher("WEB-INF/Fail.jsp").forward(request, response);
 		} else {
-
 			HttpSession session = request.getSession(false);
-			
 			if (session == null) {
 				session = request.getSession(true);	
 			}
+			
 			Map<String, Integer> votes = new HashMap<String, Integer>();
 			votes =  (Map<String, Integer>) session.getAttribute("votes");
 			if(votes==null) {
@@ -80,6 +81,11 @@ public class StandServlet extends HttpServlet {
 			
 			String nr = request.getParameter("nr");
 			Stand stand = eao.getStand(nr);
+			
+			ArrayList<TimeStats> set = stand.getHistorikk();
+			
+			
+			
 			session.setAttribute("stand", stand);
 			Map<String, Integer> votes = new HashMap<String, Integer>();			
 			votes =  (Map<String, Integer>) session.getAttribute("votes");

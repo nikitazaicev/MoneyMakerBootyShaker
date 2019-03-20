@@ -1,0 +1,13 @@
+@import "compass/css3";
+
+body{
+  text-align: center;
+  background-color: white;
+  font-family :"Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+p{
+	color: red;
+}
+
+}

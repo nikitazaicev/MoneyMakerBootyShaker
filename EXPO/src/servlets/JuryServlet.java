@@ -25,7 +25,7 @@ public class JuryServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
+		request.getRequestDispatcher("WEB-INF/Fail.jsp").forward(request, response);
 		
 	}
 

@@ -2,11 +2,18 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" />
+<script type="text/javascript" src="/test.js"></script>
+<title>Feil</title>
 </head>
+<script type="text/javascript" src="/test.js"></script>
 <body>
-Finner ikke standen
+<script type="text/javascript" src="/test.js"></script>
+<p id="test">Finner ikke standen<p>
+<script type="text/javascript" src="/test.js"></script>
 </body>
+<script type="text/javascript" src="/test.js"></script>
 </html>
