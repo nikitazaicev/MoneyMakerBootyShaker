@@ -71,4 +71,9 @@ public class TimeStats implements Serializable {
 		return tiden.compareTo(ts.getTime());
 	}
 
+	@Override
+	public String toString() {
+		return "TimeStats [stand=" + stand + ", tiden=" + tiden + ", score=" + score + "]";
+	}
+
 }

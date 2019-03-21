@@ -113,5 +113,10 @@ public class Stand implements Serializable{
 	public void setAntStemmer(int antStemmer) {
 		this.antStemmer = antStemmer;
 	}
+
+	@Override
+	public String toString() {
+		return "Stand [id=" + id + ", score=" + score + ", antStemmer=" + antStemmer + ", historikk=" + historikk.toString() + "]";
+	}
 	
 }

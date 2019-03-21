@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 import objects.Stand;
 import objects.StandEAO;
 import objects.TimeStats;
-
+import org.json.simple.JSONObject;
 /**
  * Servlet implementation class StatsServlet
  */
@@ -37,17 +37,21 @@ public class StatsServlet extends HttpServlet {
 			s.invalidate();
 		}
 			s = request.getSession(true);
+			
 			Stand stand = eao.getStand("1");
 			ArrayList<TimeStats> set = stand.getHistorikk();
 			set.sort((x1,x2)->x1.compareTo(x2));
-			Map<Long,Integer> tuple = new HashMap<Long,Integer>();
+			
+			JSONObject obj = new JSONObject();
+			obj.put(stand, stand.getHistorikk());
+			
 			ArrayList<Long> xCoordinates = new ArrayList<Long>();
 			ArrayList<Integer> yCoordinates = new ArrayList<Integer>();
 			Iterator<TimeStats> iter = set.iterator();
 			while(iter.hasNext()){
 				
 				TimeStats  ts = (TimeStats) iter.next();
-				tuple.put(ts.getTime().getTime(), ts.getScore());
+				
 				xCoordinates.add(ts.getTime().getTime());
 				yCoordinates.add(ts.getScore());
 				
