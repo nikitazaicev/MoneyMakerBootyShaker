@@ -3,55 +3,74 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+
 <script>
 window.onload = function () {
-
-var dps = []; // dataPoints
-var chart = new CanvasJS.Chart("chartContainer", {
-	title :{
-		text: "Dynamic Data"
-	},
-	axisY: {
-		includeZero: false
-	},      
-	data: [{
-		type: "line",
-		dataPoints: dps
-	}]
-});
-var x = ${xCoordinates};
-var y = ${yCoordinates};
-var xVal = 0;
-var yVal = 100; 
-var updateInterval = 5000;
-var dataLength = 100; // number of dataPoints visible at any point
-
-var updateChart = function (count) {
-
-	count = count || 1;
-
-	for (var j = 0; j < x.length; j++) {
-		yVal = y[j];
-		xVal = x[j];
-		dps.push({
-			x: xVal,
-			y: yVal
-		});
-		
+	
+	var x = ${xCoordinates};
+	var y = ${yCoordinates};
+	var myData =[];
+	var i;
+	for (i = 0; i<x.length;i++){
+	myData.push({
+		x: x[i],
+		y: y[i]
+	});
 	}
-
-	if (dps.length > dataLength) {
-		dps.shift();
-	}
-
+	
+	var chart = new CanvasJS.Chart("chartContainer", {
+		animationEnabled: true,
+		theme: "light2",
+		title:{
+			text: "Site Traffic"
+		},
+		axisX:{
+			valueFormatString: "DD MMM",
+			crosshair: {
+				enabled: true,
+				snapToDataPoint: true
+			}
+		},
+		axisY: {
+			title: "Number of Visits",
+			crosshair: {
+				enabled: true
+			}
+		},
+		toolTip:{
+			shared:true
+		},  
+		legend:{
+			cursor:"pointer",
+			verticalAlign: "bottom",
+			horizontalAlign: "left",
+			dockInsidePlotArea: true,
+			itemclick: toogleDataSeries
+		},
+		data: [{
+			type: "line",
+			showInLegend: true,
+			name: "Total Visit",
+			markerType: "square",
+			xValueFormatString: "DD MMM, YYYY",
+			color: "#F08080",
+			dataPoints: myData
+		}]
+	});
 	chart.render();
-};
 
-updateChart(dataLength);
-setInterval(function(){updateChart()}, updateInterval);
+	function toogleDataSeries(e){
+		if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+			e.dataSeries.visible = false;
+		} else{
+			e.dataSeries.visible = true;
+		}
+		chart.render();
+	}
 
-}
+	}
 </script>
+
 </head>
 <body>
 <div id="chartContainer" style="height: 300px; width: 100%;"></div>
