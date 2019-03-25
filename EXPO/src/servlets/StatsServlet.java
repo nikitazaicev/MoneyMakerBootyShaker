@@ -35,6 +35,11 @@ public class StatsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession s = request.getSession(false);
+		
+		if(s == null || s.getAttribute("LoggetInn") == null) {
+			response.sendRedirect("login"+"?requiresLogin");
+			return;
+		}
 
 			s = request.getSession(true);
 			

@@ -42,11 +42,13 @@ public class LoggInnServletv2 extends HttpServlet {
 		String pass = request.getParameter("passord");
 		
 		if(pass.equals("test")) {
-			HttpSession session = request.getSession(true);
-			
+			HttpSession session = request.getSession(false);
+			if (session != null) {
+				//session.invalidate();
+			}
 			session = request.getSession(true);
 			session.setMaxInactiveInterval(60);
-			session.setAttribute("test", "test");
+			session.setAttribute("LoggetInn", true);
 			
 			response.sendRedirect("StatsServlet"); // godkjent innlogging
 		} else {

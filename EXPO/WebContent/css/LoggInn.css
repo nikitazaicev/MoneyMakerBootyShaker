@@ -1,5 +1,13 @@
 body {
-	background-color: lightblue;
+	height: 200px;
+    width: 400px;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -200px;
+	background-color: #e3e3e3;
 }
 
 #overskrift {
@@ -14,8 +22,8 @@ body {
 }
 
 #melding {
-	position: relative;
-	left: 43.5%;
+	allign-content: center;
+	padding-left: 31%;
 }
 
 
