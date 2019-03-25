@@ -36,56 +36,48 @@ window.onload = function () {
 	});}
 	
 	var chart = new CanvasJS.Chart("chartContainer", {
-		animationEnabled: true,
-		theme: "light2",
-		title:{
-			text: "Statistic"
+		title: {
+			text: "Top 3"
 		},
-		axisX:{
-			valueFormatString: "DD MMM",
-			crosshair: {
-				enabled: true,
-				snapToDataPoint: true
-			}
+		axisX: {
+			valueFormatString: " "
 		},
-		axisY: {
-			title: "Score",
-			crosshair: {
-				enabled: true
-			}
+		axisY2: {
+			title: "Score"
 		},
-		toolTip:{
-			shared:true
-		},  
-		legend:{
-			cursor:"pointer",
-			verticalAlign: "bottom",
-			horizontalAlign: "left",
+		toolTip: {
+			shared: true
+		},
+		legend: {
+			cursor: "pointer",
+			verticalAlign: "top",
+			horizontalAlign: "center",
 			dockInsidePlotArea: true,
 			itemclick: toogleDataSeries
 		},
-		data: [{
+		data: [
+		{
 			type: "line",
+			axisYType: "secondary",
+			name: "Stand nr",
 			showInLegend: true,
-			name: "Stand 1",
-			color: "#F08080",
-			yValueFormatString: "#0.## ",
+			markerSize: 0,
 			dataPoints: myData0
 		},
 		{
 			type: "line",
+			axisYType: "secondary",
+			name: "Stand nr",
 			showInLegend: true,
-			name: "Stand 2",
-			color: "#F08030",
-			yValueFormatString: "#0.## ",
+			markerSize: 0,
 			dataPoints: myData1
 		},
 		{
 			type: "line",
+			axisYType: "secondary",
+			name: "Stand nr",
 			showInLegend: true,
-			name: "Stand 3",
-			color: "#F08000",
-			yValueFormatString: "#0.## ",
+			markerSize: 0,
 			dataPoints: myData2
 		}]
 	});

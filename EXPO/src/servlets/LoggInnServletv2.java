@@ -42,10 +42,8 @@ public class LoggInnServletv2 extends HttpServlet {
 		String pass = request.getParameter("passord");
 		
 		if(pass.equals("test")) {
-			HttpSession session = request.getSession(false);
-			if (session != null) {
-				session.invalidate();
-			}
+			HttpSession session = request.getSession(true);
+			
 			session = request.getSession(true);
 			session.setMaxInactiveInterval(60);
 			session.setAttribute("test", "test");

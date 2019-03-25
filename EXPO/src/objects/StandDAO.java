@@ -51,4 +51,14 @@ public class StandDAO {
 		Query q = em.createQuery("SELECT s FROM Stand s", Stand.class);
 		return q.getResultList();	
 	}
+	
+	public List<Stand> getTopStands(int antall){
+		Query q = em.createQuery("SELECT s FROM Stand s", Stand.class);
+		List<Stand> stands = q.getResultList() ;
+		stands.sort((x1,x2)->x1.getScore()-x2.getScore());	
+		List<Stand> top = stands.subList(0, antall);
+		return top;
+	}
+
+
 }
