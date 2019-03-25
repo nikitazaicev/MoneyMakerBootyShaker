@@ -34,12 +34,10 @@ public class StatsServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession s = request.getSession(false);
-
-		if (s != null) {
-			s.invalidate();
-		}
-			s = request.getSession(true);
+		HttpSession session = request.getSession(false);
+		if (session == null || session.getAttribute("test")==null) {
+			response.sendRedirect("login" + "?requiresLogin");
+		}else{
 			
 			List<Stand> all = eao.getAllStands();
 			for(int i=0;i<all.size();i++) {
@@ -60,6 +58,7 @@ public class StatsServlet extends HttpServlet {
 			request.setAttribute("y"+i, yCoordinates);
 			}
 		request.getRequestDispatcher("WEB-INF/Stats.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
