@@ -36,9 +36,6 @@ public class StatsServlet extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession s = request.getSession(false);
 
-		if (s != null) {
-			s.invalidate();
-		}
 			s = request.getSession(true);
 			
 			List<Stand> all = eao.getAllStands();
