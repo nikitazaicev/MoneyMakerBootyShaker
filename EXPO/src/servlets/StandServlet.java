@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 import org.eclipse.persistence.sessions.Session;
 
 import objects.Stand;
-import objects.StandEAO;
+import objects.StandDAO;
 import objects.TimeStats;
 
 /**
@@ -28,7 +28,7 @@ public class StandServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	@EJB
-	StandEAO eao;
+	StandDAO eao;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse

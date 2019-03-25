@@ -1,15 +1,19 @@
 package objects;
 
+import java.io.File;
+import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.codehaus.jackson.map.ObjectMapper;
 import org.json.simple.JSONObject;
 
-public class JSONconverter {
-	public static void main(String[] args) {
-	      JSONObject obj = new JSONObject();
-	      Stand stand= new Stand("123",12321);
-	      stand.getHistorikk().add(new TimeStats());
 
-	      obj.put(stand, stand.getHistorikk());
-	      System.out.print(obj);
+public class JSONconverter {
+	public static void main(String[] args) {  
+
 	   }
 	
 }

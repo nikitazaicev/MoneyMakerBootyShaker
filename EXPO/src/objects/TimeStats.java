@@ -38,7 +38,7 @@ public class TimeStats implements Serializable {
 		this.tiden = Timestamp.valueOf(LocalDateTime.now()); 
 	}
 	
-	public TimeStats(Stand stand, Timestamp tiden, int score) {
+	public TimeStats(Stand stand, int score) {
 		this.stand = stand;
 		this.tiden = Timestamp.valueOf(LocalDateTime.now()); 
 		this.score = score;

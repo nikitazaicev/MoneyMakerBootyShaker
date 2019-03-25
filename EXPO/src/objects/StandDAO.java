@@ -1,6 +1,7 @@
 package objects;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.ejb.Stateless;
@@ -8,10 +9,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 
 @Stateless
-public class StandEAO {
+public class StandDAO {
 
 	@PersistenceContext(name = "expo")
     private EntityManager em;
@@ -44,5 +46,9 @@ public class StandEAO {
 		Stand stand = getStand(id);
 		
 		return stand.getHistorikk();
+	}
+	public List<Stand> getAllStands(){
+		Query q = em.createQuery("SELECT s FROM Stand s", Stand.class);
+		return q.getResultList();	
 	}
 }

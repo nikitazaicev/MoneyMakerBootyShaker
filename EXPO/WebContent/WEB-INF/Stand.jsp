@@ -5,7 +5,7 @@
 <html>
 
 <head>
-<link href="CSS/stylesheet1.css" rel="stylesheet" type="text/css">
+<link href="CSS/stylesheet.css" rel="stylesheet" type="text/css">
 <meta charset="ISO-8859-1">
 <title>Stand ${stand.id}</title>
 </head>

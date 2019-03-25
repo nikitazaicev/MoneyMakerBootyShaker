@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -16,9 +17,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import objects.Stand;
-import objects.StandEAO;
+import objects.StandDAO;
 import objects.TimeStats;
 import org.json.simple.JSONObject;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 /**
  * Servlet implementation class StatsServlet
  */
@@ -26,7 +29,7 @@ import org.json.simple.JSONObject;
 public class StatsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@EJB
-	StandEAO eao;
+	StandDAO eao;
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -38,13 +41,10 @@ public class StatsServlet extends HttpServlet {
 		}
 			s = request.getSession(true);
 			
-			Stand stand = eao.getStand("1");
-			ArrayList<TimeStats> set = stand.getHistorikk();
+			List<Stand> all = eao.getAllStands();
+			for(int i=0;i<all.size();i++) {
+			ArrayList<TimeStats> set = all.get(i).getHistorikk();
 			set.sort((x1,x2)->x1.compareTo(x2));
-			
-			JSONObject obj = new JSONObject();
-			obj.put(stand, stand.getHistorikk());
-			
 			ArrayList<Long> xCoordinates = new ArrayList<Long>();
 			ArrayList<Integer> yCoordinates = new ArrayList<Integer>();
 			Iterator<TimeStats> iter = set.iterator();
@@ -56,9 +56,9 @@ public class StatsServlet extends HttpServlet {
 				yCoordinates.add(ts.getScore());
 				
 			}
-			
-			request.setAttribute("xCoordinates", xCoordinates);
-			request.setAttribute("yCoordinates", yCoordinates);	
+			request.setAttribute("x"+i, xCoordinates);
+			request.setAttribute("y"+i, yCoordinates);
+			}
 		request.getRequestDispatcher("WEB-INF/Stats.jsp").forward(request, response);
 	}
 
