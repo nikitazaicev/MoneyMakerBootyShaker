@@ -13,6 +13,21 @@
 </head>
 <body>
 
+<div class="topnav">
+<input type="text" placeholder="Søk etter Stand">
+
+
+<div class="dropdown">
+  <button class="dropbtn">Meny</button>
+  <div class="dropdown-content">
+    <a href="StatsServlet">Statistikk</a>
+    <a href="StandServlet">Stand liste</a>
+  </div>
+</div>
+</div>
+
+<div class="container">
+
 	<h2 id="overskrift">Logg inn</h2>
 	<font color="red" id="melding">${loginMessage}</font>
 	<form action="login" method="post" class="pure-form pure-form-aligned" id="form">
@@ -24,6 +39,8 @@
 				<button class="small green button">Logg Inn</button>
 			</div>
 	</form>
+	
+</div>
 
 </body>
 </html>

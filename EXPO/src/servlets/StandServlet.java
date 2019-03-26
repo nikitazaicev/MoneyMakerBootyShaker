@@ -105,7 +105,9 @@ public class StandServlet extends HttpServlet {
 				eao.update(stand);
 				votes.put(nr, nyVote);
 			}
+
 		}
+
 		request.getRequestDispatcher("WEB-INF/Ferdig.jsp").forward(request, response);
 	}
 

@@ -26,6 +26,7 @@ public class Stand implements Serializable{
 	private String id;
 	
 	private int score;
+	
 	private int antStemmer;
 
 	@OneToMany(mappedBy = "stand", fetch = FetchType.EAGER)
@@ -45,6 +46,7 @@ public class Stand implements Serializable{
 	public Stand(String id, int score) {
 		super();
 		this.score = score;
+		this.antStemmer = 0;
 		historikk = new ArrayList<TimeStats>();
 	}
 	/**
@@ -71,7 +73,13 @@ public class Stand implements Serializable{
 	public TimeStats reVote(int gammel, int nyVote) {
 		// Hente inn gammel vote fra session
 		// Fjern gammel vote fra score og legg til nyVote
-		// antStemmer forblir dem samme 
+		// antStemmer forblir dem samme
+		if(gammel == 0 && nyVote > 0) {
+			antStemmer++;
+		} else if(gammel > 0 && nyVote == 0) {
+			antStemmer--;
+		}
+		this.antStemmer= this.antStemmer+1;
 		score = score - gammel + nyVote;
 		TimeStats ts = new TimeStats(this,score);
 		historikk.add(ts);

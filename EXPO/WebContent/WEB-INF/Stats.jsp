@@ -3,6 +3,10 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" 
+integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+<link href="css/Stats.css" rel="stylesheet" type="text/css">
+<meta charset="ISO-8859-1">
 
 <script>
 window.onload = function () {
@@ -98,7 +102,22 @@ window.onload = function () {
 
 </head>
 <body>
+<div class="topnav">
+
+
+<div class="dropdown">
+  <button class="dropbtn">Meny</button>
+  <div class="dropdown-content">
+    <a href="StatsServlet">Statistikk</a>
+    <a href="StandServlet">Stand liste</a>
+  </div>
+</div>
+</div>
+
+<div class="container">
 <div id="chartContainer" style="height: 300px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+</div>
 </body>
 </html>

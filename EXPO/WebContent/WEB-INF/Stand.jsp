@@ -5,11 +5,29 @@
 <html>
 
 <head>
-<link href="CSS/stylesheet.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" 
+integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+<link href="css/stylesheet.css" rel="stylesheet" type="text/css">
 <meta charset="ISO-8859-1">
 <title>Stand ${stand.id}</title>
 </head>
 <body>
+
+<div class="topnav">
+<input type="text" placeholder="Søk etter Stand">
+
+
+<div class="dropdown">
+  <button class="dropbtn">Meny</button>
+  <div class="dropdown-content">
+    <a href="StatsServlet">Statistikk</a>
+    <a href="StandServlet">Stand liste</a>
+  </div>
+</div>
+</div>
+
+<div class="container">
+
 <p> ${feil}</p>
 <br>
 You have visited Stand #${param.nr}
@@ -20,7 +38,10 @@ score ${stand.score}
 <br>
 
 <form method="post" action="StandServlet">
+0 is no vote
+
 <input type="radio"  name="nyVote" value="0" checked="checked">0
+<br>
 <input type="radio"  name="nyVote" value="1" />1
 <input type="radio"  name="nyVote" value="2"/>2
 <input type="radio"  name="nyVote" value="3" />3
@@ -31,21 +52,7 @@ score ${stand.score}
 <input type="submit" name="nr" value="Gi stemme">
 </form>
 <br>
-
-<!-- 
-<div id="wrapper">
-<input type="radio" id="star1" name="star" />
-<label for="star1">stjerne1</label>
-<input type="radio" id="star2" name="star" />
-<label for="star2">stjern2</label>
-<input type="radio" id="star3" name="star" checked="checked"/>
-<label for="star3">stjern</label>
-<input type="radio" id="star4" name="star" />
-<label for="star4">star</label>
-<input type="radio" id="star5" name="star" />
-<label for="star5">patrick</label>
 </div>
- -->
 
 </body>
 </html>
