@@ -20,8 +20,6 @@ public class JSONconverter {
 	public static void main(String[] args) {  
 		JSONObject sampleObject = new JSONObject();
 	   
-		
-		
 		Stand s = new Stand(1,1234);
 
 		sampleObject.put("stand", s.getScore());
@@ -56,7 +54,6 @@ public class JSONconverter {
 	    }
 	    object.put("x", x);
 	    object.put("y", y); 
-	    System.out.println(object);
 	    return object;
 	}
 	
