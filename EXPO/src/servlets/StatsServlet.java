@@ -22,6 +22,8 @@ import objects.TimeStats;
 import org.json.simple.JSONObject;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 /**
  * Servlet implementation class StatsServlet
  */
@@ -40,11 +42,12 @@ public class StatsServlet extends HttpServlet {
 			response.sendRedirect("login"+"?requiresLogin");
 			return;
 		}
-
+		
 			s = request.getSession(true);
-			
-			List<Stand> all = eao.getAllStands();
+			List<Stand> all = eao.getTopStands(3);
 			for(int i=0;i<all.size();i++) {
+			JSONconverter jsc = new JSONconverter();
+			jsc.convert(all.get(i));
 			ArrayList<TimeStats> set = all.get(i).getHistorikk();
 			set.sort((x1,x2)->x1.compareTo(x2));
 			ArrayList<Long> xCoordinates = new ArrayList<Long>();
