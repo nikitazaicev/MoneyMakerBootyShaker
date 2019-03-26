@@ -31,8 +31,6 @@ stand: ${stand.id}
 <br>
 stemme: ${nyVote}
 <br>
-antall: ${antall}
-antall2 : ${stand.antStemmer}
 </div>
 </body>
 

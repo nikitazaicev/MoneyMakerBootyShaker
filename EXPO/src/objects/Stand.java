@@ -79,7 +79,6 @@ public class Stand implements Serializable{
 		} else if(gammel > 0 && nyVote == 0) {
 			antStemmer--;
 		}
-		this.antStemmer= this.antStemmer+1;
 		score = score - gammel + nyVote;
 		TimeStats ts = new TimeStats(this,score);
 		historikk.add(ts);

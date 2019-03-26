@@ -32,14 +32,8 @@ integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP
 <br>
 You have visited Stand #${param.nr}
 <br>
-stand ${stand.id}
-<br>
-score ${stand.score}
-<br>
 
 <form method="post" action="StandServlet">
-0 is no vote
-
 <input type="radio"  name="nyVote" value="0" checked="checked">0
 <br>
 <input type="radio"  name="nyVote" value="1" />1
