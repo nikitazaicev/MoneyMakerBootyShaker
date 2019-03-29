@@ -112,6 +112,7 @@ window.onload = function () {
     <a href="StandServlet">Stand liste</a>
   </div>
 </div>
+
 </div>
 
 <div class="container">

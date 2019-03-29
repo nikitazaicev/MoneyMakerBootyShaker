@@ -73,7 +73,7 @@ public class Stand implements Serializable{
 	public TimeStats reVote(int gammel, int nyVote) {
 		// Hente inn gammel vote fra session
 		// Fjern gammel vote fra score og legg til nyVote
-		// antStemmer forblir dem samme
+		// antStemmer forandrer seg hvis nyVote ller gammelVote er 0
 		if(gammel == 0 && nyVote > 0) {
 			antStemmer++;
 		} else if(gammel > 0 && nyVote == 0) {

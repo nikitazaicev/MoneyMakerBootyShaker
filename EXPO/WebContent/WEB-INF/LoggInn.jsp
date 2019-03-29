@@ -14,7 +14,6 @@
 <body>
 
 <div class="topnav">
-<input type="text" placeholder="Søk etter Stand">
 
 
 <div class="dropdown">

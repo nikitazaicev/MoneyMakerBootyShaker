@@ -7,6 +7,10 @@
 	padding-top: 10%;
 }
 
+.raido{
+	color: #e3e3e3;
+}
+
 
 input[type=text] {
     padding:5px; 
@@ -76,11 +80,11 @@ input[type=submit]:hover {
 
 .dropdown-content a:hover {background-color: lightblue}
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content{
   display: block;
 }
 
-.dropdown:hover .dropbtn {
+.dropdown:hover .dropbtn{
   background-color: grey;
   color: black;
 }

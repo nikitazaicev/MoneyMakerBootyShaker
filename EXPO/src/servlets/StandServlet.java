@@ -97,7 +97,7 @@ public class StandServlet extends HttpServlet {
 			String StringNyVote = (String) request.getParameter("nyVote");
 			int nyVote = 0;
 
-			if (StringNyVote != null && !StringNyVote.equals("0")) {
+			if (StringNyVote != null /*&& !StringNyVote.equals("0")*/) {
 				nyVote = Integer.parseInt(StringNyVote);
 				TimeStats ts = stand.reVote(votes.get(nr),nyVote);
 				session.setAttribute("nyVote", nyVote);
