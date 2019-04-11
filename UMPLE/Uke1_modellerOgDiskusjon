@@ -1,0 +1,81 @@
+Systemoblig 4
+Uke 1
+
+https://cruise.eecs.uottawa.ca/umpleonline/umple.php?model=190409240337
+
+1. Klassediagram
+
+https://cruise.eecs.uottawa.ca/umpleonline/umple.php?model=190409240337
+
+class Stand
+{
+  String nr;
+  int totalScore;
+1 -- * Vote;
+  1 -- * User;
+}
+
+class Vote
+{
+  int score;
+  String time;
+}
+
+class User
+{
+String  id;
+  1 -- * Vote;
+}
+
+class Jury
+{
+  isA User;
+
+}
+
+class Statistics
+{
+ 
+String password;
+  1 -- * Stand;
+  1 -- * Jury;
+}
+
+2. State machine
+
+https://cruise.eecs.uottawa.ca/umpleonline/umple.php?model=190409240337
+
+class Vote {
+  state {
+    noVote { 
+      newVote -> voted ;
+    }
+    voted {
+      reVote -> voted;
+    }
+  }
+}
+
+class Statistics {
+  state {
+    loggInn { 
+      skrivInnPassord -> statistikk;
+      feilPassord -> loggInn;
+    }
+    statistikk {
+      filter -> statistikk;
+    }
+  }
+}
+
+3. 
+Egne filer i mappen.
+
+4. Diskusjon/observasjoner generert kode
+
+Det som blir generert har flere ulike metoder. 
+Mange av disse metodene ville vi sikkert aldri bruke, 
+men de ser likevel til  å være brukelig i noen tilfeller (addVoteAt() og addOrMoveVoteAt()). 
+Andre ting vi har aldri gjørt var boolean wasSet i hver set motode for eksempel. 
+Det blir lagd masse ulike hjelpemetoder som indexOfVote() og  numberOfVotes(). 
+Generelt er det bare masse ting for å jobbe rund ArrayList.
