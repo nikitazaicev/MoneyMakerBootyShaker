@@ -79,3 +79,4 @@ men de ser likevel til  å være brukelig i noen tilfeller (addVoteAt() og addOr
 Andre ting vi har aldri gjørt var boolean wasSet i hver set motode for eksempel. 
 Det blir lagd masse ulike hjelpemetoder som indexOfVote() og  numberOfVotes(). 
 Generelt er det bare masse ting for å jobbe rund ArrayList.
+Når det kommer til koden som blir generert fra tilstandsmaskinen så har vi aldri gjort lignende. 
