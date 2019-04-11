@@ -76,9 +76,9 @@ Egne filer i mappen.
 Det som blir generert har flere ulike metoder. 
 Mange av disse metodene ville vi sikkert aldri bruke, 
 men de ser likevel til  å være brukelig i noen tilfeller (addVoteAt() og addOrMoveVoteAt()). 
-Andre ting vi har aldri gjørt var boolean wasSet i hver set motode for eksempel. 
+Andre ting vi har aldri gjort var boolean wasSet i hver set metode for eksempel. 
 Det blir lagd masse ulike hjelpemetoder som indexOfVote() og  numberOfVotes(). 
-Generelt er det bare masse ting for å jobbe rund ArrayList.
+Generelt er det bare masse ting for å jobbe rundt ArrayList.
 Vi har ikke så mye kunnskap om de andre språkene, noen av de ser greit ut, men det var få som var unødvendig store og overkomplisert.
 Når det kommer til koden som blir generert fra tilstandsmaskinen så har vi aldri gjort lignende.
 
