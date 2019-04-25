@@ -1,0 +1,83 @@
+<DataModel xmlns:gr="http://www.webratio.com/2006/WebML/Graph">
+  <Entity id="User" name="User" duration="persistent" gr:x="20" gr:y="155" gr:hideAttributes="false" attributeOrder="userOID userName password email">
+    <Attribute name="oid" id="userOID" type="integer" key="true"/>
+    <Attribute name="userName" id="userName" type="string"/>
+    <Attribute name="password" id="password" type="password"/>
+    <Attribute name="email" id="email" type="string"/>
+  </Entity>
+  <Entity id="Group" name="Group" duration="persistent" gr:x="250" gr:y="178" gr:hideAttributes="false" attributeOrder="groupOID groupName">
+    <Attribute name="oid" id="groupOID" type="integer" key="true"/>
+    <Attribute name="groupName" id="groupName" type="string"/>
+  </Entity>
+  <Entity id="Module" name="Module" duration="persistent" gr:x="472" gr:y="167" gr:hideAttributes="false" attributeOrder="moduleOID moduleID moduleName">
+    <Attribute name="oid" id="moduleOID" type="integer" key="true"/>
+    <Attribute name="moduleID" id="moduleID" type="string"/>
+    <Attribute name="moduleName" id="moduleName" type="string"/>
+  </Entity>
+  <Relationship id="User2Group_Group2User" name="User_Group" sourceEntity="User" targetEntity="Group">
+    <RelationshipRole1 id="User2Group" name="groups" maxCard="N"/>
+    <RelationshipRole2 id="Group2User" name="users" maxCard="N"/>
+  </Relationship>
+  <Relationship id="User2DefaultGroup_DefaultGroup2User" name="User_DefaultGroup" sourceEntity="User" targetEntity="Group" gr:bendpoints="113,42,-112,44">
+    <RelationshipRole1 id="User2DefaultGroup" name="defaultGroup" maxCard="1"/>
+    <RelationshipRole2 id="DefaultGroup2User" name="defaultUsers" maxCard="N"/>
+  </Relationship>
+  <Relationship id="Group2DefaultModule_DefaultModule2Group" name="Group_DefaultModule" sourceEntity="Group" targetEntity="Module">
+    <RelationshipRole1 id="Group2DefaultModule" name="defaultModule" maxCard="1"/>
+    <RelationshipRole2 id="DefaultModule2Group" name="defaultGroups" maxCard="N"/>
+  </Relationship>
+  <Relationship id="Group2Module_Module2Group" name="Group_Module" sourceEntity="Group" targetEntity="Module" gr:bendpoints="110,41,-115,41">
+    <RelationshipRole1 id="Group2Module" name="modules" maxCard="N"/>
+    <RelationshipRole2 id="Module2Group" name="groups" maxCard="N"/>
+  </Relationship>
+  <Entity gr:x="105" gr:y="315" id="ent1" name="Customer" duration="persistent" attributeOrder="ent1#att1 ent1#att2 ent1#att3 ent1#att4 ent1#att5 ent1#att6">
+    <Attribute id="ent1#att1" key="true" name="id" type="string"/>
+    <Attribute id="ent1#att2" name="email" type="string"/>
+    <Attribute id="ent1#att3" name="title" type="string"/>
+    <Attribute id="ent1#att4" name="name" type="string"/>
+    <Attribute id="ent1#att5" name="address" type="string"/>
+    <Attribute id="ent1#att6" name="phone" type="string"/>
+  </Entity>
+  <Entity gr:x="345" gr:y="370" id="ent2" name="ShoppingCart" duration="persistent" attributeOrder="ent2#att7 ent2#att13 ent2#att14 ent2#att15">
+    <Attribute id="ent2#att7" key="true" name="cardId" type="integer"/>
+    <Attribute id="ent2#att13" name="create" type="date"/>
+    <Attribute id="ent2#att14" name="orderTotal" type="decimal"/>
+    <Attribute id="ent2#att15" name="customerId" type="string"/>
+  </Entity>
+  <Entity gr:x="615" gr:y="585" id="ent3" name="Product" duration="persistent" attributeOrder="ent3#att8 ent3#att18 ent3#att19 ent3#att20">
+    <Attribute id="ent3#att8" key="true" name="producId" type="integer"/>
+    <Attribute id="ent3#att18" name="name" type="string"/>
+    <Attribute id="ent3#att19" name="description" type="string"/>
+    <Attribute id="ent3#att20" name="price" type="float"/>
+  </Entity>
+  <Entity gr:x="600" gr:y="400" id="ent4" name="Order" duration="persistent" attributeOrder="ent4#att9 ent4#att16 ent4#att17">
+    <Attribute id="ent4#att9" key="true" name="cartId" type="integer"/>
+    <Attribute id="ent4#att16" name="productId" type="integer"/>
+    <Attribute id="ent4#att17" name="productQuantity" type="integer"/>
+  </Entity>
+  <Entity gr:x="110" gr:y="550" id="ent5" name="CreditCard" duration="persistent" attributeOrder="ent5#att10 ent5#att11 ent5#att12">
+    <Attribute id="ent5#att10" key="true" name="cardNumber" type="integer"/>
+    <Attribute id="ent5#att11" name="expirationDate" type="date"/>
+    <Attribute id="ent5#att12" name="customerId" type="string"/>
+  </Entity>
+  <Relationship id="rel2" name="CreditCard_Customer" sourceEntity="ent5" targetEntity="ent1">
+    <RelationshipRole1 id="rel2#role3" name="CreditCardToCustomer" maxCard="N"/>
+    <RelationshipRole2 id="rel2#role4" name="CustomerToCreditCard" maxCard="1"/>
+  </Relationship>
+  <Relationship id="rel3" name="ShoppingCart_Customer" sourceEntity="ent2" targetEntity="ent1">
+    <RelationshipRole1 id="rel3#role5" name="ShoppingCartToCustomer" maxCard="N"/>
+    <RelationshipRole2 id="rel3#role6" name="CustomerToShoppingCart" maxCard="1"/>
+  </Relationship>
+  <Relationship id="rel4" name="CreditCard_ShoppingCart" sourceEntity="ent5" targetEntity="ent2">
+    <RelationshipRole1 id="rel4#role7" name="CreditCardToShoppingCart" maxCard="1"/>
+    <RelationshipRole2 id="rel4#role8" name="ShoppingCartToCreditCard" maxCard="1"/>
+  </Relationship>
+  <Relationship id="rel5" name="Product_Order" sourceEntity="ent3" targetEntity="ent4">
+    <RelationshipRole1 id="rel5#role9" name="ProductToOrder" maxCard="1"/>
+    <RelationshipRole2 id="rel5#role10" name="OrderToProduct" maxCard="N"/>
+  </Relationship>
+  <Relationship id="rel6" name="Order_ShoppingCart" sourceEntity="ent4" targetEntity="ent2">
+    <RelationshipRole1 id="rel6#role11" name="OrderToShoppingCart" maxCard="N"/>
+    <RelationshipRole2 id="rel6#role12" name="ShoppingCartToOrder" maxCard="1"/>
+  </Relationship>
+</DataModel>

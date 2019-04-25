@@ -1,0 +1,19 @@
+<SiteView xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="sv1" name="Site View " homePage="sv1#page1" landmarks="sv1#page1">
+  <OperationUnits>
+    <ModuleInstanceUnit gr:x="1095" gr:y="200" id="sv1#miu1" action="true" name="addToCart">
+      <OKLink id="sv1#miu1#oln1" name="Flow11" to="sv1#page6" automaticCoupling="true"/>
+    </ModuleInstanceUnit>
+    <ModuleInstanceUnit gr:x="945" gr:y="375" id="sv1#miu2" action="true" name="update quantities" linkOrder="sv1#miu2#ln14">
+      <Link id="sv1#miu2#ln14" name="Flow14" to="sv1#page7" automaticCoupling="true" type="transport" validate="true" gr:bendpoints="142,-2,587,-157;138,-60,583,-215;-464,-37,6,-207"/>
+    </ModuleInstanceUnit>
+    <ModuleInstanceUnit gr:x="950" gr:y="530" id="sv1#miu3" action="true" name="empty the cart">
+      <OKLink id="sv1#miu3#oln3" name="OKFlow3" to="sv1#page6" automaticCoupling="true"/>
+    </ModuleInstanceUnit>
+    <ModuleInstanceUnit gr:x="1300" gr:y="725" id="sv1#miu4" action="true" name="Execute tho peument">
+      <OKLink id="sv1#miu4#oln4" name="OKFlow4" to="sv1#page6" automaticCoupling="true"/>
+    </ModuleInstanceUnit>
+    <ModuleInstanceUnit gr:x="740" gr:y="685" id="sv1#miu5" action="false" name="payment execution">
+      <OKLink id="sv1#miu5#oln5" name="OKFlow5" to="sv1#page6" automaticCoupling="true"/>
+    </ModuleInstanceUnit>
+  </OperationUnits>
+</SiteView>
