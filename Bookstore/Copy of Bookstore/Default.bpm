@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?bpm version="1.0.9"?>
+
+<BPMProject xmlns:gr="http://www.webratio.com/2006/WebML/Graph" gr:showTooltip="true" gr:showActivityParameters="true" uuid="JUWEYE8U_MTGO9A" poolOrder="pool1 pool4">  
+  <Pool id="pool1" name="Bookstore POS" uuid="JUWEYE8U_5UY"> 
+    <Parameters/>  
+    <Lane id="pool1#lane1" name="Customer" notification="None" uuid="JUWEYE8U_29L"> 
+      <Task id="pool1#lane1#task1" name="Explore Products" execution="userExecution" gr:x="160" gr:y="40" uuid="JUWEYE8U_1PA"> 
+        <FlowConnector id="pool1#lane1#task1#fcon7" to="pool1#lane1#task2" uuid="JUWF4XFD_PV1JJL"/>
+      </Task>  
+      <StartEvent execution="userExecution" gr:x="36" gr:y="48" id="pool1#lane1#strev2" name="Start Event 1" uuid="JUWEYE8U_3NC"> 
+        <FlowConnector id="pool1#lane1#strev2#fcon1" to="pool1#lane1#task1" uuid="JUWEYE8U_1RW"/> 
+      </StartEvent>  
+      <EndEvent id="pool1#lane1#endter1" name="End Event 1" uuid="JUWEYE8U_3DG" gr:x="1720" gr:y="202"/>  
+      <Task id="pool1#lane1#task2" name="Select Product" execution="userExecution" uuid="JUWF002J_9BNCZ" gr:x="520" gr:y="40">
+        <FlowConnector id="pool1#lane1#task2#fcon8" to="pool1#lane1#gateex1" uuid="JUWF6LXQ_BFTWQ"/>
+      </Task>
+      <Task id="pool1#lane1#task3" name="Checkout" execution="userExecution" uuid="JUWF10C8_7XM3IC" gr:x="1240" gr:y="40">
+        <FlowConnector id="pool1#lane1#task3#fcon12" to="pool1#lane1#intcmes1" uuid="JUWFDUYV_IUCUDT"/>
+      </Task>
+      <Task id="pool1#lane1#task4" name="Confrim" execution="userExecution" uuid="JUWF19JD_76JCDQ" gr:x="1540" gr:y="30">
+        <FlowConnector id="pool1#lane1#task4#fcon14" to="pool1#lane1#endter1" uuid="JUWFELU0_S31CTV"/>
+      </Task>
+      <Task id="pool1#lane1#task5" name="Manage Cart" execution="userExecution" uuid="JUWF1EEB_YRGL6J" gr:x="950" gr:y="40">
+        <FlowConnector id="pool1#lane1#task5#fcon11" to="pool1#lane1#task3" uuid="JUWFC26X_5VN2WD"/>
+      </Task>
+      <ExclusiveGateway id="pool1#lane1#gateex1" name="Exclusive Gateway 1" uuid="JUWF677D_CCPRMQ" gr:x="733" gr:y="88" execution="serviceExecution" conditionType="Literal">
+        <FlowConnector id="pool1#lane1#gateex1#fcon9" to="pool1#lane1#task1" uuid="JUWF6QSL_161AW6" gr:bendpoints="-351.0 156.0"/>
+        <FlowConnector id="pool1#lane1#gateex1#fcon10" to="pool1#lane1#task5" uuid="JUWF770E_EONPYQ"/>
+      </ExclusiveGateway>
+      <IntermediateCatchingMessage id="pool1#lane1#intcmes1" name="Intermediate Catching Message 1" uuid="JUWFDLMI_NF46QA" gr:x="1363" gr:y="82">
+        <FlowConnector id="pool1#lane1#intcmes1#fcon13" to="pool1#lane1#task4" uuid="JUWFECNW_6ED40X"/>
+      </IntermediateCatchingMessage>
+    </Lane>  
+    <MessageFlow id="pool1#msgf1" to="pool4" uuid="JUWFP47M_9KLX3N"/>
+  </Pool>  
+  <Pool id="pool4" name="Pool 4" uuid="JUWFM4Q0_DDFM6R">
+    <Lane id="pool4#lane6" name="Bank" uuid="JUWFM4Q0_KXA0BH"/>
+    <Parameters/>
+    <MessageFlow id="pool4#msgf2" to="pool1" uuid="JUWFSWOT_7AELKU"/>
+  </Pool>
+</BPMProject>
