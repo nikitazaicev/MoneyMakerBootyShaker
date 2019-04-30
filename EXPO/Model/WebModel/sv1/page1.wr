@@ -1,0 +1,72 @@
+<Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" gr:x="350" gr:y="10" id="sv1#page1" name="Stand">
+  <ContentUnits>
+    <DataUnit gr:x="0" gr:y="0" id="sv1#page1#dau1" name="Stand" entity="ent2" customDescriptor="false" displayAttributes="ent2#att2">
+      <Selector id="sv1#page1#dau1#su1" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="sv1#page1#dau1#su1#kcond1" name="KeyCondition1" predicate="in" implied="false"/>
+      </Selector>
+      <Link id="sv1#page1#dau1#ln15" name="Flow15" to="sv1#page1#enu3" type="transport" validate="true">
+        <LinkParameter id="sv1#page1#dau1#ln15#par7" name="nr_PASSING" source="data.ent2#att2" passing="true"/>
+      </Link>
+    </DataUnit>
+    <EntryUnit gr:x="145" gr:y="20" id="sv1#page1#enu3" name="Vote" linkOrder="sv1#page1#enu3#ln16">
+      <SelectionField id="sv1#page1#enu3#sfld1" name="Score" type="integer" preselectValue="0" splitOutput="false"/>
+      <Link id="sv1#page1#enu3#ln16" name="Flow7" to="sv1#miu3" type="normal" validate="true">
+        <LinkParameter id="sv1#page1#enu3#ln16#par8" name="Score_PASSING" source="sv1#page1#enu3#sfld1" passing="true"/>
+        <LinkParameter id="sv1#page1#enu3#ln16#par11" name="nr_PASSING" sourceLinkParameter="sv1#page1#dau1#ln15#par7" passing="true"/>
+      </Link>
+    </EntryUnit>
+  </ContentUnits>
+  <layout:Grid containerType="grid">
+    <layout:Row>
+      <layout:Cell colspan="12"/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+    </layout:Row>
+    <layout:Row>
+      <layout:Cell colspan="12">
+        <layout:Unit unitId="sv1#page1#dau1">
+          <layout:Attribute attribute="ent2#att2"/>
+        </layout:Unit>
+      </layout:Cell>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+    </layout:Row>
+    <layout:Row>
+      <layout:Cell colspan="12">
+        <layout:Unit unitId="sv1#page1#enu3">
+          <layout:Field field="sv1#page1#enu3#sfld1"/>
+          <layout:Link link="sv1#page1#enu3#ln16"/>
+        </layout:Unit>
+      </layout:Cell>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+    </layout:Row>
+  </layout:Grid>
+</Page>

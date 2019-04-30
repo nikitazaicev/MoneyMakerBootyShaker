@@ -1,0 +1,46 @@
+<Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" gr:x="120" gr:y="15" id="sv1#page2" name="Stands">
+  <ContentUnits>
+    <PowerIndexUnit gr:x="0" gr:y="0" id="sv1#page2#pwu4" name="Stands" sortable="true" checkable="false" useCountQuery="false" entity="ent2" displayAttributes="ent2#att2 ent2#att6" linkOrder="sv1#page2#pwu4#ln14">
+      <Link id="sv1#page2#pwu4#ln14" name="Flow14" to="sv1#page1#dau1" type="normal" validate="true">
+        <LinkParameter id="sv1#page2#pwu4#ln14#par3" name="nr_KeyCondition1 [nr]" source="data[].ent2#att2" target="sv1#page1#dau1#su1#kcond1.ent2#att2"/>
+        <LinkParameter id="sv1#page2#pwu4#ln14#par4" name="nr_PASSING" source="data[].ent2#att2" passing="true"/>
+      </Link>
+    </PowerIndexUnit>
+  </ContentUnits>
+  <layout:Grid containerType="grid">
+    <layout:Row>
+      <layout:Cell colspan="12">
+        <layout:Unit unitId="sv1#page2#pwu4">
+          <layout:Attribute attribute="ent2#att2"/>
+          <layout:Attribute attribute="ent2#att6"/>
+          <layout:Link link="sv1#page2#pwu4#ln14"/>
+        </layout:Unit>
+      </layout:Cell>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+    </layout:Row>
+    <layout:Row>
+      <layout:Cell colspan="12"/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+    </layout:Row>
+  </layout:Grid>
+</Page>

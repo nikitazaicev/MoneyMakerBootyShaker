@@ -1,0 +1,26 @@
+<SiteView xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="sv1" name="EXPOsiteview" landmarks="sv1#area1" homePage="sv1#page2">
+  <OperationUnits>
+    <ModuleInstanceUnit gr:x="645" gr:y="60" id="sv1#miu3" action="true" name="Vote" linkOrder="sv1#miu3#ln17">
+      <Link id="sv1#miu3#ln9" name="Flow9" to="sv1#mfu1" type="transport" validate="true">
+        <LinkParameter id="sv1#miu3#ln9#par9" name="Score_PASSING" sourceLinkParameter="sv1#page1#enu3#ln16#par8" passing="true"/>
+        <LinkParameter id="sv1#miu3#ln9#par12" name="nr_PASSING" sourceLinkParameter="sv1#page1#enu3#ln16#par11" passing="true"/>
+      </Link>
+      <Link id="sv1#miu3#ln10" name="Flow10" to="sv1#cru1" type="transport" validate="true">
+        <LinkParameter id="sv1#miu3#ln10#par10" name="Score_PASSING" sourceLinkParameter="sv1#page1#enu3#ln16#par8" passing="true"/>
+        <LinkParameter id="sv1#miu3#ln10#par13" name="nr_PASSING" sourceLinkParameter="sv1#page1#enu3#ln16#par11" passing="true"/>
+      </Link>
+      <Link id="sv1#miu3#ln17" name="Flow17" to="sv1#page8#dau3" type="transport" validate="true">
+        <LinkParameter id="sv1#miu3#ln17#par14" name="nr_PASSING" sourceLinkParameter="sv1#page1#enu3#ln16#par11" passing="true"/>
+        <LinkParameter id="sv1#miu3#ln17#par15" name="Score_PASSING" sourceLinkParameter="sv1#page1#enu3#ln16#par8" passing="true"/>
+      </Link>
+    </ModuleInstanceUnit>
+    <ModifyUnit gr:x="900" gr:y="50" id="sv1#mfu1" name="UpdateStand" entity="ent2">
+      <Selector id="sv1#mfu1#su3" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="sv1#mfu1#su3#kcond3" name="KeyCondition3" predicate="in" implied="false"/>
+      </Selector>
+    </ModifyUnit>
+    <CreateUnit gr:x="880" gr:y="195" id="sv1#cru1" name="RegisterVote" entity="ent5">
+      <OKLink id="sv1#cru1#oln6" name="OKFlow3" to="sv1#page8" automaticCoupling="true"/>
+    </CreateUnit>
+  </OperationUnits>
+</SiteView>
